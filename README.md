@@ -5,7 +5,7 @@ This allows you to recombine a query from your SugarCRM log file into a readable
 You will find the sqlViewer tool on your Admin Menu in the 'System' section
 ![Screenshot](docs/1.png)
 
-When you click on that link it will take you to the maion screen. Here you can either paste in a query that you want to
+When you click on that link it will take you to the main screen. Here you can either paste in a query that you want to
 work with or click on the 'Retrieve SQL from Log' button.
 ![Screenshot](docs/2.png)
 
