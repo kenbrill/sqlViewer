@@ -43,12 +43,12 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])) {
             if (empty($queries)) {
                 $ss->assign('ERROR', "<h3><a href='index.php?module=Administration&action=index'>There are no queries in the log</a></h3>");
             }
+            //we sort by the date
+            usort($queries, function ($item1, $item2) {
+                return $item2['dateString'] <=> $item1['dateString'];
+            });
             if (count($queries) > $rows) {
-                //First we sort by the date
-                usort($queries, function ($item1, $item2) {
-                    return $item2['dateString'] <=> $item1['dateString'];
-                });
-                //Then we grab the first 500
+                //we grab the first 500
                 $queries = array_slice($queries, 0, $rows);
             }
             $ss->assign('COLS', array(
@@ -190,6 +190,7 @@ function outputQuery($initialSQL): string
                     case 5:
                         $finalSQL .= $paramsArray[$currentIndex];
                         break;
+                    case 1:
                     case 2:
                         $finalSQL .= "'{$paramsArray[$currentIndex]}'";
                         break;
